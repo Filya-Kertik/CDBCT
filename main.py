@@ -1,14 +1,16 @@
 from pysondb import db
 import os
 import core
-server_name = '[CoreDBConnectTEST]'
-CLI_prefix = ' :// '
-path = os.getcwd()+'\Data'
 
-db = db.getDb(path+'\db.json')
-
+core.create_cfg()
 core.initialize()
 
+db = db.getDb(core.cfg['PATH']['Data']+'\db.json')
+
 while True:
-	CLI = input(server_name	+ CLI_prefix)
-	core.CLIcommands(CLI)
+	try:
+		CLI = input(core.cfg['NAMESPACE']['ServerName'] +' '+ core.cfg['NAMESPACE']['cli']+' ')
+		core.CLIcommands(CLI)
+	except Exception as e:
+		print('[ERROR] ','Core error')
+		print(e)
