@@ -4,8 +4,8 @@ import core
 
 # WORKSPACE
 
-func_name = input(core.cfg['NAMESPACE']['ServerName']+' '+'name new command --> ')
-func_desk = input(core.cfg['NAMESPACE']['ServerName']+' '+'description command --> ')
+func_name = input(core.cfg['NAMESPACE']['ServerName'] + 'name new command --> ')
+func_desk = input(core.cfg['NAMESPACE']['ServerName'] + 'description command --> ')
 
 commandspace=[]
 with open(core.cfg['PATH']['Commands']+'commandspace.cct','r',encoding='utf-8') as d:
