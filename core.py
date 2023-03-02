@@ -1,5 +1,5 @@
-from pysondb import db
 import os
+import base64
 import runpy as patch
 import configparser
 
@@ -14,11 +14,11 @@ def initialize():
 		for line in f:
 			query = line.split(',')
 			for sample in query:
-				commandsprite.append(sample.replace('\n', '').replace(' ', ''))
+				commandsprite.append(sample.replace('\n', '').replace(' ', '').encode(encoding='utf-8'))
 
 def CLIcommands(cli_str):
 	global commandsprite
-	if cli_str in commandsprite:
+	if crypto(cli_str) in commandsprite:
 		try:
 			patch.run_path(cfg['PATH']['Scripts']+cli_str.lower()+'.py')
 		except Exception as e:
@@ -50,3 +50,8 @@ def create_cfg():
 		cfg.write(conf)
 		conf.close()
 		print('[CoreDBConnectTEST]','config created')
+
+def crypto(target):
+	return base64.b64encode(target.encode('utf-8'))
+def decrypto(target):
+	return base64.b64decode(target).decode('utf-8')

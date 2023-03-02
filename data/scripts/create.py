@@ -4,8 +4,8 @@ import core
 
 # WORKSPACE
 
-func_name = input(core.cfg['NAMESPACE']['ServerName'] + 'name new command --> ')
-func_desk = input(core.cfg['NAMESPACE']['ServerName'] + 'description command --> ')
+func_name = input(core.cfg['NAMESPACE']['ServerName'] + ' name new command --> ')
+func_desk = input(core.cfg['NAMESPACE']['ServerName'] + ' description command --> ')
 
 commandspace=[]
 with open(core.cfg['PATH']['Commands']+'commandspace.cct','r',encoding='utf-8') as d:
@@ -20,13 +20,13 @@ with open(core.cfg['PATH']['Commands']+'commandspace.cct','r',encoding='utf-8') 
 			with open(core.cfg['PATH']['Commands']+'commandsprite.cct','a') as sprite:
 				sample=[]
 				firstUp = func_name.title()
-				sample.append(firstUp)
+				sample.append(core.crypto(firstUp))
 
 				twolow = func_name.lower()
-				sample.append(twolow)
+				sample.append(core.crypto(twolow))
 
 				allup = func_name.upper()
-				sample.append(allup)
+				sample.append(core.crypto(allup))
 
 				sprite.write('\n'+str(sample).replace('[','').replace(']','').replace("'",'').replace(' ',''))
 
@@ -35,8 +35,7 @@ with open(core.cfg['PATH']['Commands']+'commandspace.cct','r',encoding='utf-8') 
 sys.path.insert(0,'../..')
 import core
 
-# WORKSPACE
-		"""
+# WORKSPACE"""
 							)
 	
 close = print(core.cfg['NAMESPACE']['ServerName']+' '+'command -create finished')
